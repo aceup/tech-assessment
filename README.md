@@ -1,4 +1,4 @@
-# Aceup Tech Assessment - Dockerized Monorepo
+# Aceup Tech Assessment
 
 This repository contains two projects:
 - **frontend/**: React 19 + Vite application
