@@ -23,4 +23,4 @@ db.migrate:
 	docker-compose run backend bundle exec rake db:migrate
 
 test:
-	docker-compose run backend bundle exec rspec
+	docker-compose run backend bundle exec rspec spec/$(folder)
