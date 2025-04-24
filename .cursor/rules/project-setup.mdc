@@ -1,0 +1,44 @@
+---
+description: Project Setup Cursor Rules
+globs: 
+alwaysApply: true
+---
+# Project Setup Guide
+
+## Environment Configuration
+The project uses Docker for development. Key files:
+- [docker-compose.yml](mdc:docker-compose.yml) for service configuration
+- [Makefile](mdc:Makefile) for common commands
+
+## Database Configuration
+PostgreSQL database settings:
+- Host: db
+- Username: postgres
+- Password: postgres
+- Database: aceup_db
+
+## Development Commands
+Use make commands for common tasks:
+```bash
+make build    # Build all services
+make start    # Start the services
+make stop     # Stop all services
+make db.init  # First-time database setup
+make rails.c  # Access Rails console
+make sh       # Access bash console
+```
+
+## Access Points
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:3000
+
+## Technical Stack
+### Frontend
+- React 19
+- Vite
+- TypeScript
+
+### Backend
+- Ruby on Rails 7.2 (API-only)
+- Ruby 3.2
+- PostgreSQL

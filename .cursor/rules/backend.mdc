@@ -1,0 +1,56 @@
+---
+description: Backend Cursor Rules
+globs: 
+alwaysApply: true
+---
+# Backend Implementation Guide
+
+## Core Components
+### Model Layer
+The Order model is defined in [app/models/order.rb](mdc:backend/app/models/order.rb)
+- Implements validations
+- Follows MVCS pattern
+- Defines relationships
+
+### Controller Layer
+API endpoints are handled in [app/controllers/api/v1/orders_controller.rb](mdc:backend/app/controllers/api/v1/orders_controller.rb)
+- Implements RESTful CRUD operations
+- Returns JSON responses
+- Includes error handling
+
+### Service Layer
+Business logic is encapsulated in [app/services/order_service.rb](mdc:backend/app/services/order_service.rb)
+- Handles order processing
+- Manages email notifications
+- Implements business rules
+
+## Configuration
+### Database Setup
+Database structure is defined in:
+- [db/migrate/TIMESTAMP_create_orders.rb](mdc:backend/db/migrate/TIMESTAMP_create_orders.rb)
+- Includes necessary indexes
+- Defines data types and constraints
+
+### API Configuration
+API setup is managed through:
+- [config/routes.rb](mdc:backend/config/routes.rb) for RESTful routing
+- [config/initializers/cors.rb](mdc:backend/config/initializers/cors.rb) for CORS configuration
+
+## Testing Suite
+### Model Tests
+[spec/models/order_spec.rb](mdc:backend/spec/models/order_spec.rb)
+- Validates model constraints
+- Tests relationships
+- Verifies custom methods
+
+### Controller Tests
+[spec/controllers/api/v1/orders_controller_spec.rb](mdc:backend/spec/controllers/api/v1/orders_controller_spec.rb)
+- Tests CRUD operations
+- Verifies JSON responses
+- Checks error handling
+
+### Service Tests
+[spec/services/order_service_spec.rb](mdc:backend/spec/services/order_service_spec.rb)
+- Tests business logic
+- Verifies email notifications
+- Checks edge cases

@@ -1,0 +1,28 @@
+---
+description: Frontend Cursor Rules
+globs: 
+alwaysApply: true
+---
+# Frontend Implementation Guide
+
+## Dashboard Implementation
+The main dashboard component is located at [src/components/Dashboard.tsx](mdc:frontend/src/components/Dashboard.tsx)
+- Displays order statistics using React 19 + Vite
+- Accessible at http://localhost:5173
+
+## Order Management Components
+### Table Component
+The order table is implemented in [src/components/OrderTable.tsx](mdc:frontend/src/components/OrderTable.tsx)
+- Displays orders in a table format
+- Implements real-time refresh functionality
+
+### Order Creation
+New order functionality is split across:
+- [src/components/NewOrderButton.tsx](mdc:frontend/src/components/NewOrderButton.tsx) for the trigger button
+- [src/components/NewOrderDialog.tsx](mdc:frontend/src/components/NewOrderDialog.tsx) for the creation form
+
+## API Integration
+All API calls are centralized in [src/api/orders.ts](mdc:frontend/src/api/orders.ts)
+- Implements CRUD operations
+- Handles API responses and errors
+- Manages state updates
