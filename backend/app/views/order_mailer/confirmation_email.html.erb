@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order Confirmation</h1>
+    <p>
+      Thank you for your order! Here are your order details:
+    </p>
+    <ul>
+      <li>Order ID: <%= @order.id %></li>
+      <li>Total Amount: $<%= sprintf('%.2f', @order.total_amount) %></li>
+      <li>Status: <%= @order.status.titleize %></li>
+    </ul>
+    <p>
+      We'll keep you updated on your order status.
+    </p>
+  </body>
+</html> 
