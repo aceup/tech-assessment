@@ -32,12 +32,12 @@ RSpec.describe OrderService do
     end
   end
 
-  describe '.update_status' do
+  describe '.update' do
     let(:order) { create(:order) }
 
     context 'with valid status' do
       it 'updates status successfully' do
-        result = described_class.update_status(order, :completed)
+        result = described_class.update(order, { status: :completed })
         
         expect(result).to be_success
         expect(result.order).to be_completed
@@ -47,10 +47,10 @@ RSpec.describe OrderService do
 
     context 'with invalid status' do
       it 'handles invalid status gracefully' do
-        result = described_class.update_status(order, 'invalid_status')
+        result = described_class.update(order, { status: 'invalid_status' })
         
         expect(result).not_to be_success
-        expect(result.errors).to include(/Invalid status/)
+        expect(result.errors).to include(/invalid_status/)
         expect(order.reload).to be_pending
       end
     end
