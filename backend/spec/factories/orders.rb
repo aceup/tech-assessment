@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order do
-    customer_email { Faker::Internet.email }
+    sequence(:customer_email) { |n| "test#{n}@test.com" }
     total_amount { Faker::Commerce.price(range: 0..1000.0) }
     status { :pending }
     notes { Faker::Lorem.sentence }
