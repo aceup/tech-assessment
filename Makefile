@@ -8,7 +8,7 @@ start:
 	docker-compose up
 
 stop:
-	docker-compose down
+	docker-compose down --remove-orphans
 
 rails.c:
 	docker-compose run backend rails c
