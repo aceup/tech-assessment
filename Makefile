@@ -16,6 +16,9 @@ rails.c:
 sh:
 	docker-compose run backend sh
 
+sh.frontend:
+	docker-compose run frontend sh
+
 db.init:
 	docker-compose run backend bundle exec rake db:create db:migrate db:seed
 
