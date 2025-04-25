@@ -34,5 +34,27 @@ export const ordersApi = {
       console.error('Error calculating statistics:', error);
       throw error;
     }
+  },
+
+  async createOrder(orderData) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/orders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error creating order:', error);
+      throw error;
+    }
   }
 };
