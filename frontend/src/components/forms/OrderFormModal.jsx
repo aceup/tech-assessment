@@ -32,7 +32,7 @@ const OrderFormModal = ({ showModal, onClose, onOrderCreated }) => {
         title: '',
         client: '',
         description: '',
-        dueDate: dayjs()
+        due: dayjs()
     }
 
     const [formData, setFormData] = useState(orderInitialValues);
@@ -55,7 +55,7 @@ const OrderFormModal = ({ showModal, onClose, onOrderCreated }) => {
     const handleDateChange = (newValue) => {
         setFormData(prev => ({
             ...prev,
-            dueDate: newValue
+            due: newValue
         }));
     };
 
@@ -112,7 +112,7 @@ const OrderFormModal = ({ showModal, onClose, onOrderCreated }) => {
                     <DatePicker
                         disablePast
                         label="Due Date"
-                        value={formData.dueDate}
+                        value={formData.due}
                         onChange={handleDateChange}
                         sx={{ width: '100%', mt: 1 }}
                     />
