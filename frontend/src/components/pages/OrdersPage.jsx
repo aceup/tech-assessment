@@ -1,26 +1,30 @@
 import { useEffect, useState } from 'react';
 import useFetchOrders from "../../hooks/useFetchOrders"
-import Typography from "@mui/material/Typography";
 import OrdersDashboard from '../OrdersDashboard';
 import OrdersTable from '../OrdersTable';
-import OrderForm from '../forms/OrderForm';
+import OrderFormModal from '../forms/OrderFormModal';
+import Typography from "@mui/material/Typography";
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 const OrdersPage = () => {
 
     const [orders, setOrders] = useState([]);
     const { fetchOrders } = useFetchOrders();
+    const [showModal, setShowModal] = useState(false);
 
-    useEffect(()=>{
-        const fetchData = async () => {
-            const obtainedOrders = await fetchOrders();
-            if (obtainedOrders.error){
-                alert(obtainedOrders.error);
-                return;
-            } else {
-                setOrders(obtainedOrders);
-            }
-        };
-        fetchData();
+    const loadOrders = async () => {
+        const obtainedOrders = await fetchOrders();
+        if (obtainedOrders.error) {
+            alert(obtainedOrders.error);
+            return;
+        } else {
+            setOrders(obtainedOrders);
+        }
+    };
+
+    useEffect(() => {
+        loadOrders();
     }, []);
 
     return (
@@ -29,8 +33,17 @@ const OrdersPage = () => {
                 Orders
             </Typography>
             <OrdersDashboard />
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 4, mb: 3 }}>
+                <Button variant="contained" onClick={() => setShowModal(true)}>
+                    New Order
+                </Button>
+            </Box>
             <OrdersTable orders={orders} />
-            <OrderForm />
+            <OrderFormModal
+                onClose={() => setShowModal(false)}
+                showModal={showModal}
+                onOrderCreated={loadOrders}
+            />
         </>
     )
 }
