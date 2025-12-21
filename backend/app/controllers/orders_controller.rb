@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
     def create
         new_order = Order.new(order_params)
         new_order.save!
+        OrderMailer.with(order: new_order).order_created_email.deliver_later
         render json: new_order, status: :created
     end
 
