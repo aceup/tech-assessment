@@ -6,17 +6,24 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-const COLUMNS = ['Id', 'Title', 'Client', 'Description', 'Due date', 'Status'];
+const COLUMNS = [
+  { title: 'Id', width: '5%' },
+  { title: 'Title', width: '18%' },
+  { title: 'Client', width: '12%' },
+  { title: 'Description', width: '35%' },
+  { title: 'Due date', width: '15%' },
+  { title: 'Status', width: '15%' },
+];
 
 const OrdersTable = ({ orders }) => {
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="orders table">
+      <Table aria-label="orders table" sx={{ tableLayout: 'fixed' }}>
         <TableHead>
           <TableRow>
             {
               COLUMNS.map((column) => (
-                <TableCell key={column}>{column}</TableCell>
+                <TableCell key={column.title} width={column.width}>{column.title}</TableCell>
               ))
             }
           </TableRow>

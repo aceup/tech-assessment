@@ -64,12 +64,12 @@ const OrdersDashboard = ({ orders }) => {
 
                 {/* Orders status pie */}
                 <Grid item xs={12} md={8}>
-                    <Card elevation={3} sx={{ height: '100%' }}>
-                        <CardContent>
+                    <Card elevation={3} sx={{ height: '100%', width: '100%' }}>
+                        <CardContent sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                             <Typography variant="h6" gutterBottom sx={{ mb: 2, color: 'text.primary' }}>
                                 Orders by Status
                             </Typography>
-                            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', flex: 1, alignItems: 'center', width: '100%' }}>
                                 <PieChart
                                     series={[
                                         {
@@ -81,7 +81,6 @@ const OrdersDashboard = ({ orders }) => {
                                             ],
                                         },
                                     ]}
-                                    width={200}
                                     height={220}
                                 />
                             </Box>
@@ -106,6 +105,7 @@ const OrdersDashboard = ({ orders }) => {
                                     color: '#1976d2'
                                 }]}
                                 height={300}
+                                width={600}
                             />
                         </CardContent>
                     </Card>
