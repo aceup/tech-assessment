@@ -1,26 +1,22 @@
 class OrdersController < ApplicationController
     def index
-        orders = Order.all.order(created_at: :desc)
+        orders = OrderService.list_orders
         render json: orders, status: :ok
     end
 
     def create
-        new_order = Order.new(order_params)
-        new_order.save!
-        OrderMailer.with(order: new_order).order_created_email.deliver_later
+        new_order = OrderService.create_order(order_params)
         render json: new_order, status: :created
     end
 
     def destroy
-        order_to_delete = Order.find(params[:id])
-        order_to_delete.destroy!
+        OrderService.delete_order(params[:id])
         render status: :ok
     end
 
     def update
-        order_to_change = Order.find(params[:id])
-        order_to_change.update!(order_params)
-        render json: order_to_change, status: :ok
+        updated_order = OrderService.update_order(params[:id], order_params)
+        render json: updated_order, status: :ok
     end
 
     private
