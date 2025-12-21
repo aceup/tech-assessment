@@ -32,7 +32,7 @@ const OrdersPage = () => {
             <Typography sx={{ mt: 4, mb: 3 }} variant="h2" component="div">
                 Orders
             </Typography>
-            <OrdersDashboard />
+            <OrdersDashboard orders={orders} />
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 4, mb: 3 }}>
                 <Button variant="contained" onClick={() => setShowModal(true)}>
                     New Order
